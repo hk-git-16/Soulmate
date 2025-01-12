@@ -1,13 +1,12 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import { sendOtp } from "../../../services/operations/authAPI";
-import { setSignupData } from "../../../slices/authSlice";
-import { ACCOUNT_TYPE } from "../../../utils/constants";
-import Tab from "../../common/Tab";
+// import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { sendOtp } from "../../../services/operations/authAPI";
+// import { setSignupData } from "../../../slices/authSlice";
+// import { ACCOUNT_TYPE } from "../../../utils/constants";
+// import Tab from "../core/Tab";
 
 interface SignupFormData {
   firstName: string;
@@ -18,11 +17,11 @@ interface SignupFormData {
 }
 
 function SignupForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   // State to manage account type (student or instructor)
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
+  // const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
 
   // Form data state
   const [formData, setFormData] = useState<SignupFormData>({
@@ -57,6 +56,17 @@ function SignupForm() {
       return;
     }
 
+    // Reset form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+
+    // Uncomment this block when backend logic is needed
+    /*
     const signupData = {
       ...formData,
       accountType,
@@ -66,36 +76,20 @@ function SignupForm() {
     dispatch(setSignupData(signupData));
     // Send OTP for email verification
     dispatch(sendOtp(formData.email, navigate));
-
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-    setAccountType(ACCOUNT_TYPE.STUDENT);
+    */
   };
-
-  // Data for Tab component
-  const tabData = [
-    {
-      id: 1,
-      tabName: "Student",
-      type: ACCOUNT_TYPE.STUDENT,
-    },
-    {
-      id: 2,
-      tabName: "Instructor",
-      type: ACCOUNT_TYPE.INSTRUCTOR,
-    },
-  ];
 
   return (
     <div>
       {/* Tab Component */}
-      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
+      {/* Uncomment this block when Tab is needed */}
+      {/* 
+      <Tab 
+        tabData={tabData} 
+        field={accountType} 
+        setField={setAccountType} 
+      />
+      */}
       
       {/* Signup Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
@@ -114,7 +108,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+              className="w-full rounded-[0.5rem] bg-richblack-5 p-[12px] text-richblack-5"
             />
           </label>
           <label>
@@ -131,7 +125,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+              className="w-full rounded-[0.5rem] bg-richblack-5 p-[12px] text-richblack-5"
             />
           </label>
         </div>
@@ -149,7 +143,7 @@ function SignupForm() {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+            className="w-full rounded-[0.5rem] bg-richblack-5 p-[12px] text-richblack-5"
           />
         </label>
         <div className="flex gap-x-4">
@@ -167,7 +161,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5"
+              className="w-full rounded-[0.5rem] bg-richblack-5 p-[12px] pr-10 text-richblack-5"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -194,7 +188,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5"
+              className="w-full rounded-[0.5rem] bg-richblack-5 p-[12px] pr-10 text-richblack-5"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
