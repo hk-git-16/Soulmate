@@ -11,7 +11,7 @@ export const NavbarLinks: NavbarLink[] = [
   },
   {
     title: "Therapists",
-    path: '/therapists',
+    path: '/therapy',
   },
   {
     title: "About Us",

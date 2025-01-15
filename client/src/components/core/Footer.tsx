@@ -45,7 +45,8 @@ const Footer: React.FC = () => {
                 {["About", "Careers", "Affiliates"].map((ele, i) => (
                   <div
                     key={i}
-                    className="text-[14px] text-fblue-50 cursor-pointer hover:text-white transition-all duration-200"
+                    style={{ color: "#DEEEFE" }}
+                    className="text-[14px] text-fblue-50 !important cursor-pointer hover:text-white transition-all duration-200"
                   >
                     <Link to={ele.toLowerCase()}>{ele}</Link>
                   </div>
@@ -84,6 +85,7 @@ const Footer: React.FC = () => {
                 {Plans.map((ele, index) => (
                   <div
                     key={index}
+                    style={{ color: "#DEEEFE" }}
                     className="text-[14px] text-fblue-50 cursor-pointer hover:text-white transition-all duration-200"
                   >
                     <Link to={ele.split(" ").join("-").toLowerCase()}>{ele}</Link>
@@ -144,7 +146,6 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center">Made with ❤️ CodeHelp © 2023 Studynotion</div>
         </div>
       </div>
     </div>

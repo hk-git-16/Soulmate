@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from "../../assets/logo.png"
+// import logo from "../../assets/logo.png"
 import logo2 from "../../assets/logo2.png"
 import { NavbarLinks } from "../../data/navbar-links"
 import { BsChevronDown } from 'react-icons/bs';

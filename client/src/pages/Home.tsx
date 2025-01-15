@@ -4,6 +4,7 @@ import HighLightText from '../components/home/HighlightTest'
 import CTAButton from "../components/core/Button"
 import ExploreMore from '../components/home/ExploreMore'
 import Banner from "../assets/therapy.mp4"
+import Footer from "../components/core/Footer"
 
 const Home = () => {
   return (
@@ -53,6 +54,8 @@ const Home = () => {
 
             {/* Explore More Section */}
             <ExploreMore />
+
+            <Footer />
 
         </div>   
     </div>
