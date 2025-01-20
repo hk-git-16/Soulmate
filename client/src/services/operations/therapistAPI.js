@@ -8,20 +8,17 @@ const {
   FETCH_THERAPISTS_API,
 } = therapistEndpoints;
 
-/**
- * Fetch all therapists
- */
 export function getAllTherapists() {
   return async (dispatch) => {
     try {
-      const response = await apiConnector("GET", FETCH_THERAPISTS_API);
+      const res = await apiConnector("GET", FETCH_THERAPISTS_API);
 
-      console.log("GET ALL THERAPISTS RESPONSE............", response);
+      console.log("GET ALL THERAPISTS RESPONSE............", res);
 
-      if (!response.data.success) {
-        throw new Error(response.data.message);
+      if (!res.data.success) {
+        throw new Error(res.data.message);
       }
-      return response.data.data;
+      return res.data.data;
     } catch (error) {
       console.log("GET ALL THERAPISTS ERROR............", error);
       toast.error("Failed to fetch therapists");
@@ -34,12 +31,12 @@ export function addTherapist(therapistData, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Adding therapist...");
     try {
-      const response = await apiConnector("POST", ADD_THERAPIST_API, therapistData);
+      const res = await apiConnector("POST", ADD_THERAPIST_API, therapistData);
 
-      console.log("ADD THERAPIST RESPONSE............", response);
+      console.log("ADD THERAPIST RESPONSE............", res);
 
-      if (!response.data.success) {
-        throw new Error(response.data.message);
+      if (!res.data.success) {
+        throw new Error(res.data.message);
       }
 
       navigate("/therapists");
@@ -55,12 +52,12 @@ export function editTherapist(therapistId, updatedData, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Updating therapist...");
     try {
-      const response = await apiConnector("PUT", `${EDIT_THERAPIST_API}/${therapistId}`, updatedData);
+      const res = await apiConnector("PUT", `${EDIT_THERAPIST_API}/${therapistId}`, updatedData);
 
-      console.log("EDIT THERAPIST RESPONSE............", response);
+      console.log("EDIT THERAPIST RESPONSE............", res);
 
-      if (!response.data.success) {
-        throw new Error(response.data.message);
+      if (!res.data.success) {
+        throw new Error(res.data.message);
       }
 
       navigate("/therapists");

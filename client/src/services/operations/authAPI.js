@@ -11,16 +11,16 @@ export function signUp(username, email, password, navigate) {
     const toastId = toast.loading("Registering...");
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector("POST", SIGNUP_API, {
+      const res = await apiConnector("POST", SIGNUP_API, {
         username,
         email,
         password,
       });
 
-      console.log("SIGNUP API RESPONSE............", response);
+      console.log("SIGNUP API RESPONSE............", res);
 
-      if (!response.data.success) {
-        throw new Error(response.data.message);
+      if (!res.data.success) {
+        throw new Error(res.data.message);
       }
 
       toast.success("Signup Successful");
@@ -39,24 +39,24 @@ export function login(email, password, navigate) {
     const toastId = toast.loading("Logging in...");
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector("POST", LOGIN_API, {
+      const res = await apiConnector("POST", LOGIN_API, {
         email,
         password,
       });
 
-      console.log("LOGIN API RESPONSE............", response);
+      console.log("LOGIN API RESPONSE............", res);
 
-      if (!response.data.success) {
-        throw new Error(response.data.message);
+      if (!res.data.success) {
+        throw new Error(res.data.message);
       }
 
       toast.success("Login Successful");
-      dispatch(setToken(response.data.token));
-      dispatch(setUser(response.data.user));
+      dispatch(setToken(res.data.token));
+      dispatch(setUser(res.data.user));
 
       // Save user details and token to local storage
-      localStorage.setItem("token", JSON.stringify(response.data.token));
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/dashboard");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
