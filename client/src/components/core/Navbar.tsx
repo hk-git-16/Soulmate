@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import logo2 from "../../assets/logo2.png"
 import { NavbarLinks } from "../../data/navbar-links"
 import { BsChevronDown } from 'react-icons/bs';
-import { AiOutlineShoppingCart, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
 
 interface SubLink {
   name: string;
@@ -116,12 +116,12 @@ const Navbar: React.FC = () => {
               Sign up
             </button>
           </Link>
-          <Link to="/dashboard/cart" className="relative">
+          {/* <Link to="/dashboard/cart" className="relative">
             <AiOutlineShoppingCart className="text-2xl text-gray-900" />
             <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-gray-600 text-center text-xs font-bold text-yellow-100">
               0
             </span>
-          </Link>
+          </Link> */}
         </div>
         <button className="mr-4 md:hidden">
           <AiOutlineMenu fontSize={24} fill="#AFB2BF" />

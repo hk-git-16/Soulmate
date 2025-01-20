@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/core/Footer';
-// Removed backend-related imports such as useParams, apiConnector, etc.
+import { Link } from 'react-router-dom';
 
 interface Therapist {
   id: string;
@@ -12,6 +12,8 @@ interface Therapist {
   image: string;
 }
 
+import img1 from "../assets/therapist1.jpg";
+import img2 from "../assets/therapist2.jpg";
 const therapistsMockData: Therapist[] = [
   {
     id: '1',
@@ -20,7 +22,7 @@ const therapistsMockData: Therapist[] = [
     rating: 4.9,
     yearsOfExperience: 10,
     chargePerHour: 150,
-    image: '../assets/therapist1.jpg',
+    image: img1,
   },
   {
     id: '2',
@@ -29,7 +31,7 @@ const therapistsMockData: Therapist[] = [
     rating: 4.8,
     yearsOfExperience: 8,
     chargePerHour: 120,
-    image: '../assets/therapist1.jpg',
+    image: img2,
   },
   {
     id: '3',
@@ -38,7 +40,7 @@ const therapistsMockData: Therapist[] = [
     rating: 4.85,
     yearsOfExperience: 4,
     chargePerHour: 120,
-    image: '../assets/therapist1.jpg',
+    image: img1,
   },
   {
     id: '4',
@@ -47,7 +49,7 @@ const therapistsMockData: Therapist[] = [
     rating: 4.9,
     yearsOfExperience: 20,
     chargePerHour: 180,
-    image: '../assets/therapist1.jpg',
+    image: img2,
   },
   {
     id: '5',
@@ -128,10 +130,16 @@ const Therapists: React.FC = () => {
               <img
                 src={therapist.image}
                 alt={therapist.name}
-                className="w-full h-40 object-cover rounded-lg"
+                className="w-full h-40 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-lg text-richblue-600 mt-4">{therapist.name}</h3>
-              <p className="text-sm text-richblue-600">{therapist.yearsOfExperience} years of experience</p>
+
+              <Link
+                to={`/therapist/${therapist.id}`}
+                className="text-xl font-bold text-blue-700 hover:underline"
+              >
+                {therapist.name}
+              </Link>
+              <p className="mt-4 text-sm text-richblue-600">{therapist.yearsOfExperience} years of experience</p>
               <p className="text-sm text-richblue-600">Rating: {therapist.rating}/5</p>
               <p className="text-sm text-richblue-600">${therapist.chargePerHour}/hour</p>
             </div>
